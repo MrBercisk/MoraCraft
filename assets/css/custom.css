@@ -670,8 +670,6 @@ footer .widget img {
 }
 
  .wrap {
-      font-family: 'DM Sans', sans-serif;
-      background: #12121a;
       color: #e8e8f0;
       padding: 5rem 2rem;
     }
@@ -870,4 +868,8 @@ footer .widget img {
     font-size: 13px;
     padding: 12px;
   }
+}
+
+footer{
+   background: #0F0F17 !important;
 }
