@@ -61,3 +61,31 @@ if (techTrack && !techTrack.nextElementSibling) {
       btn.classList.add('active');
     });
   });
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const sidebar      = document.getElementById('mobileSidebar');
+  const sidebarClose = document.getElementById('sidebarClose');
+  const backdrop     = document.getElementById('sidebarBackdrop');
+
+  function openSidebar() {
+    sidebar.classList.add('is-open');
+    backdrop.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+    hamburgerBtn.classList.add('is-active');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('is-open');
+    backdrop.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    hamburgerBtn.classList.remove('is-active');
+  }
+
+  hamburgerBtn?.addEventListener('click', openSidebar);
+  sidebarClose?.addEventListener('click', closeSidebar);
+  backdrop?.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
+});

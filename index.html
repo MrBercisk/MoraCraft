@@ -4,27 +4,75 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website.">
-  <meta name="keywords" content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
-  <meta name="author" content="elemis">
-  <title>MoraCraft</title>
+
+  <!-- ✅ SEO Primary Meta Tags -->
+  <title>MoraCraft – Professional Web Development & UI/UX Design Studio</title>
+  <meta name="title" content="MoraCraft – Professional Web Development & UI/UX Design Studio">
+  <meta name="description" content="MoraCraft is a professional web development and UI/UX design studio. We build modern, responsive, and user-centered websites for businesses and startups.">
+  <meta name="keywords" content="web development services, UI UX design, professional web developer, website design, custom website, frontend developer, web design agency, UI designer, UX designer, moracraft">
+  <meta name="author" content="MoraCraft">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <link rel="canonical" href="https://www.moracraft.com/">
+
+  <!-- ✅ Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.moracraft.com/">
+  <meta property="og:title" content="MoraCraft – Professional Web Development & UI/UX Design Studio">
+  <meta property="og:description" content="MoraCraft is a professional web development and UI/UX design studio. We build modern, responsive, and user-centered websites for businesses and startups.">
+  <meta property="og:image" content="https://www.moracraft.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="MoraCraft">
+  <meta property="og:locale" content="en_US">
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.moracraft.com/">
+  <meta name="twitter:title" content="MoraCraft – Professional Web Development & UI/UX Design Studio">
+  <meta name="twitter:description" content="MoraCraft is a professional web development and UI/UX design studio. We build modern, responsive, and user-centered websites for businesses and startups.">
+  <meta name="twitter:image" content="https://www.moracraft.com/assets/img/og-image.jpg">
+
+  <!-- ✅ Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MoraCraft",
+    "url": "https://www.moracraft.com",
+    "logo": "https://www.moracraft.com/assets/img/favicon.png",
+    "image": "https://www.moracraft.com/assets/img/og-image.jpg",
+    "description": "MoraCraft is a professional web development and UI/UX design studio for businesses and startups.",
+    "priceRange": "$$",
+    "serviceType": ["Web Development", "UI Design", "UX Design", "Frontend Development"],
+    "sameAs": [
+      "https://www.instagram.com/moracraft",
+      "https://www.linkedin.com/company/moracraft"
+    ]
+  }
+  </script>
+
+  <!-- ✅ Favicon -->
   <link rel="shortcut icon" href="./assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="./assets/img/favicon.png">
+
+  <!-- ✅ Stylesheets -->
   <link rel="stylesheet" href="./assets/css/plugins.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/custom.css">
   <link rel="preload" href="./assets/css/fonts/dm.css" as="style" onload="this.rel='stylesheet'">
 </head>
-
 <body>
   <div class="content-wrapper">
     <header class="wrapper">
       
 
-    <nav class="navbar navbar-expand-lg center-nav navbar-dark navbar-bg-dark">
+    <nav class="navbar navbar-expand-lg center-nav navbar-dark navbar-bg-dark py-3 bg-dark navbar-floating-responsive">
     <div class="container flex-lg-row flex-nowrap align-items-center">
         <div class="navbar-brand w-100">
         <a href="./index.html">
-            <img src="./assets/img/logo_codemora.png" srcset="./assets/img/logo_codemora.png 2x" alt=""/>
+            <img src="./assets/img/logo_moracraftnew.png" srcset="./assets/img/logo_moracraftnew.png 2x" alt=""/>
         </a>
         </div>
         <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
@@ -34,7 +82,7 @@
         </div>
         <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
             <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
             <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
@@ -64,7 +112,14 @@
                 <a href="./contact.html" class="btn btn-sm btn-danger rounded-pill btn-red">Contact</a>
                 </li>
                 <li class="nav-item d-lg-none">
-                <button class="hamburger offcanvas-nav-btn"><span></span></button>
+                  <button class="hamburger offcanvas-nav-btn" id="hamburgerBtn"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target=".offcanvas-nav"
+                    aria-controls="navbarOffcanvas">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                  </button>
                 </li>
             </ul>
         <!-- /.navbar-nav -->
@@ -230,11 +285,11 @@
     
 
     <!-- ABOUT SECTION -->
-    <section class="wrapper bg-light">
+    <section class="wrapper bg-secondary">
     <div class="container py-14 py-md-16">
         <div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
         <div class="col-lg-6 position-relative order-lg-2">
-            <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
+            <div class="shape bg-dot red rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
             <div class="overlap-grid overlap-grid-2">
             <div class="item">
                 <figure class="rounded shadow"><img src="./assets/img/photos/about2.jpg" srcset="./assets/img/photos/about2@2x.jpg 2x" alt=""></figure>
@@ -246,24 +301,33 @@
         </div>
         <!--/column -->
         <div class="col-lg-6">
-            <img src="./assets/img/icons/lineal/megaphone.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
-            <h2 class="display-4 mb-3">Who Are We?</h2>
-            <p class="lead fs-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum iusto eaque aut maxime voluptatibus aliquid accusantium harum dolorum dignissimos similique laborum consectetur neque porro vero explicabo repudiandae, perspiciatis esse distinctio..</p>
-            <p class="mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat debitis rem maiores minima vero totam doloribus cumque expedita esse repudiandae, deserunt cupiditate quas, voluptates eveniet quam, inventore aut! Quas, aut!.</p>
+            <div class="title mb-4">
+              <span class="section-title">
+                &#9679; About Us
+              </span>
+            </div>
+            <h2 class="display-4 mb-3 text-white">Who We Are</h2>
+            <p class="lead fs-lg">We're MoraCraft — a fresh, passionate web development and UI/UX design studio on a mission to help businesses show up beautifully online. We may be new, but we bring big energy, sharp skills, and a genuine love for crafting digital experiences that actually work.</p>
+            <p class="mb-6">From building clean, responsive websites to designing intuitive user interfaces, we're here to turn your ideas into something real and remarkable. We work closely with our clients — listening first, then creating — because great digital products start with understanding people, not just pixels.</p>
             <div class="row gy-3 gx-xl-8">
-            <!-- <div class="col-xl-6">
-                <ul class="icon-list bullet-bg bullet-soft-primary mb-0">
-                <li><span><i class="uil uil-check"></i></span><span>Aenean eu leo quam ornare curabitur blandit tempus.</span></li>
-                <li class="mt-3"><span><i class="uil uil-check"></i></span><span>Nullam quis risus eget urna mollis ornare donec elit.</span></li>
-                </ul>
-            </div> -->
-            <!--/column -->
-            <!-- <div class="col-xl-6">
-                <ul class="icon-list bullet-bg bullet-soft-primary mb-0">
-                <li><span><i class="uil uil-check"></i></span><span>Etiam porta sem malesuada magna mollis euismod.</span></li>
-                <li class="mt-3"><span><i class="uil uil-check"></i></span><span>Fermentum massa vivamus faucibus amet euismod.</span></li>
-                </ul>
-            </div> -->
+              <div class="col-4">
+                <div class="stat-card">
+                  <span class="stat-number">10+</span>
+                  <span class="stat-label">Project Delivered</span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-card">
+                  <span class="stat-number">50+</span>
+                  <span class="stat-label">Happy Clients</span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-card">
+                  <span class="stat-number">5+</span>
+                  <span class="stat-label">Years Experience</span>
+                </div>
+              </div>
             <!--/column -->
             </div>
             <!--/.row -->
@@ -277,13 +341,10 @@
     <!-- /section -->
 
 
-
-
-    <!-- /section -->
-    <!-- Technologies We Use - Animated Marquee -->
-    <section class="wrapper bg-dark" style="background: #12141a; padding: 3rem 0; overflow: hidden;">
+    <!-- Technologies We Use section -->
+    <section class="wrapper bg-dark" style=" padding: 3rem 0; overflow: hidden;">
       <div class="text-center mb-4">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,50,50,0.12);border:1px solid rgba(220,50,50,0.35);color:#e05555;font-size:13px;font-weight:500;padding:6px 18px;border-radius:20px;letter-spacing:0.04em;">
+        <span class="section-title">
           &#9679; Technologies We Use
         </span>
       </div>
@@ -301,10 +362,12 @@
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TS"></div><span></span></div>
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div><span></span></div>
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div><span></span></div>
-          <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="Git"></div><span></span></div>
+          <div class="tech-item"><div class="tech-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="tailwind"/>
+          </div><span></span></div>
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></div><span></span></div>
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></div><span></span></div>
-          <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filamentphp/filamentphp-original.svg" alt="FilamentPHP"></div><span></span></div>
+          <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/filamentphp/filamentphp-original.svg" alt="FilamentPHP" class="icon-yellow"></div><span></span></div>
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap"></div><span></span></div>
           <div class="tech-item"><div class="tech-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div><span></span></div>
         </div>
@@ -312,8 +375,384 @@
     </section>
     <!-- /section -->
 
+    <!-- Expertise Section -->
+     
+    <section class="wrapper bg-secondary">
+      <div class="container py-14 py-md-16 text-center">
+        <div class="row">
+          <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <div class="text-center mb-4">
+              <span class="section-title">
+                &#9679; Services
+              </span>
+            </div>
+            <h3 class="display-4 mb-10 px-xl-10 text-white">Our Expertise</h3>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <div class="position-relative">
+          <div class="shape rounded-circle bg-soft-blue rellax w-16 h-16" data-rellax-speed="1" style="bottom: -0.5rem; right: -2.2rem; z-index: 0;"></div>
+          <div class="shape bg-dot red rellax w-16 h-17" data-rellax-speed="1" style="top: -0.5rem; left: -2.5rem; z-index: 0;"></div>
+          <div class="row gx-md-5 gy-5 text-center">
+            <div class="col-md-6 col-xl-4">
+              <div class="card bg-card-custom shadow-lg">
+                <div class="card-body">
+                  <img src="./assets/img/icons/lineal/search-2.svg" class="svg-inject icon-svg icon-svg-md text-yellow mb-3" alt="" />
+                  <h4 class="text-white">Web Development</h4>
+                  <p class="mb-2">We build fast and reliable websites and web applications for your business.</p>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+            <div class="col-md-6 col-xl-4">
+              <div class="card bg-card-custom shadow-lg">
+                <div class="card-body">
+                  <img src="./assets/img/icons/lineal/browser.svg" class="svg-inject icon-svg icon-svg-md text-red mb-3" alt="" />
+                  <h4 class="text-white">Web Design</h4>
+                  <p class="mb-2">We design clean and user-friendly website interfaces for a better user experience.</p>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+            <div class="col-md-6 col-xl-4">
+              <div class="card bg-card-custom shadow-lg">
+                <div class="card-body">
+                  <img src="./assets/img/icons/lineal/chat-2.svg" class="svg-inject icon-svg icon-svg-md text-green mb-3" alt="" />
+                  <h4 class="text-white">Mobile App Design</h4>
+                  <p class="mb-2">We create simple and intuitive mobile app designs that are easy to use.</p>
+                </div>
+                <!--/.card-body -->
+              </div>
+              <!--/.card -->
+            </div>
+            <!--/column -->
+          </div>
+          <!--/.row -->
+        </div>
+        <!-- /.position-relative -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+
+
+    <!-- portfolio section -->
+
+    <section class="wrapper bg-dark">
+      <div class="container py-14 py-md-16">
+        <div class="row">
+          <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+              <div class="text-center mb-4">
+                <span class="section-title">
+                  &#9679; Portfolio
+                </span>
+              </div>
+            <h2 class="display-4 mb-3 text-white">View Our <span class="underline-3 style-2 red">Work</span></h2>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <div class="swiper-container grid-view mb-6" data-margin="30" data-dots="true" data-items-xl="3" data-items-md="2" data-items-xs="1">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide bg-card-custom">
+                <figure class="rounded mb-6"><img src="./assets/img/photos/pd7.jpg" srcset="./assets/img/photos/pd7@2x.jpg 2x" alt="" /><a class="item-link" href="./assets/img/photos/pd7-full.jpg" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+                <div class="project-details d-flex justify-content-center flex-column px-4">
+                  <div class="post-header">
+                    <h2 class="post-title h3"><a href="./single-project.html" class="link-dark text-primary text-primary">Cras Fermentum Sem</a></h2>
+                    <div class="post-category text-ash">Stationary</div>
+                      <div class="text-left mb-4">
+                        <span class="section-title">
+                          &#9679; Web Design
+                        </span>
+                      </div>
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!--/.swiper-slide -->
+              <div class="swiper-slide bg-card-custom">
+                <figure class="rounded mb-6"><img src="./assets/img/photos/pd8.jpg" srcset="./assets/img/photos/pd8@2x.jpg 2x" alt="" /><a class="item-link" href="./assets/img/photos/pd8-full.jpg" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+                <div class="project-details d-flex justify-content-center flex-column px-4">
+                  <div class="post-header">
+                    <h2 class="post-title h3"><a href="./single-project2.html" class="link-dark text-primary">Mollis Ipsum Mattis</a></h2>
+                    <div class="post-category text-ash">Magazine, Book</div>
+                     <div class="text-left mb-4">
+                        <span class="section-title">
+                          &#9679; Web Design
+                        </span>
+                      </div>
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!--/.swiper-slide -->
+              <div class="swiper-slide bg-card-custom">
+                <figure class="rounded mb-6"><img src="./assets/img/photos/pd9.jpg" srcset="./assets/img/photos/pd9@2x.jpg 2x" alt="" /><a class="item-link" href="./assets/img/photos/pd9-full.jpg" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+                <div class="project-details d-flex justify-content-center flex-column px-4">
+                  <div class="post-header">
+                    <h2 class="post-title h3"><a href="./single-project3.html" class="link-dark text-primary">Ipsum Ultricies Cursus</a></h2>
+                    <div class="post-category text-ash">Packaging</div>
+                     <div class="text-left mb-4">
+                        <span class="section-title">
+                          &#9679; Web Design
+                        </span>
+                      </div>
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!--/.swiper-slide -->
+              <div class="swiper-slide bg-card-custom">
+                <figure class="rounded mb-6"><img src="./assets/img/photos/pd10.jpg" srcset="./assets/img/photos/pd10@2x.jpg 2x" alt="" /><a class="item-link" href="./assets/img/photos/pd10-full.jpg" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+                <div class="project-details d-flex justify-content-center flex-column px-4">
+                  <div class="post-header">
+                    <h2 class="post-title h3"><a href="./single-project.html" class="link-dark text-primary">Inceptos Euismod Egestas</a></h2>
+                    <div class="post-category text-ash">Stationary, Branding</div>
+                     <div class="text-left mb-4">
+                        <span class="section-title">
+                          &#9679; Web Design
+                        </span>
+                      </div>
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!--/.swiper-slide -->
+              <div class="swiper-slide bg-card-custom">
+                <figure class="rounded mb-6"><img src="./assets/img/photos/pd11.jpg" srcset="./assets/img/photos/pd11@2x.jpg 2x" alt="" /><a class="item-link" href="./assets/img/photos/pd11-full.jpg" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+                <div class="project-details d-flex justify-content-center flex-column px-4">
+                  <div class="post-header">
+                    <h2 class="post-title h3"><a href="./single-project2.html" class="link-dark text-primary">Ipsum Mollis Vulputate</a></h2>
+                    <div class="post-category text-ash">Packaging</div>
+                     <div class="text-left mb-4">
+                        <span class="section-title">
+                          &#9679; Web Design
+                        </span>
+                      </div>
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!--/.swiper-slide -->
+              <div class="swiper-slide bg-card-custom">
+                <figure class="rounded mb-6"><img src="./assets/img/photos/pd12.jpg" srcset="./assets/img/photos/pd12@2x.jpg 2x" alt="" /><a class="item-link" href="./assets/img/photos/pd12-full.jpg" data-glightbox data-gallery="projects-group"><i class="uil uil-focus-add"></i></a></figure>
+                <div class="project-details d-flex justify-content-center flex-column px-4">
+                  <div class="post-header">
+                    <h2 class="post-title h3"><a href="./single-project3.html" class="link-dark text-primary">Porta Ornare Cras</a></h2>
+                    <div class="post-category text-ash">Branding</div>
+                     <div class="text-left mb-4">
+                        <span class="section-title">
+                          &#9679; Web Design
+                        </span>
+                      </div>
+                  </div>
+                  <!-- /.post-header -->
+                </div>
+                <!-- /.project-details -->
+              </div>
+              <!--/.swiper-slide -->
+            </div>
+            <!--/.swiper-wrapper -->
+          </div>
+          <!-- /.swiper -->
+        </div>
+        <!-- /.swiper-container -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+
+
+    <!-- why choose us section-->
+     
+
+    <section class="wrapper bg-secondary">
+      <div class="container py-14 py-md-16">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
+          <div class="col-lg-7 order-lg-2">
+            <div class="row gx-md-5 gy-5">
+              <div class="col-md-5 offset-md-1 align-self-end">
+                <div class="card bg-pale-yellow">
+                  <div class="card-body">
+                    <img src="./assets/img/icons/lineal/telephone-3.svg" class="svg-inject icon-svg icon-svg-md text-yellow mb-3" alt="" />
+                    <h4>24/7 Support</h4>
+                    <p class="mb-0">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta.</p>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+              <div class="col-md-6 align-self-end">
+                <div class="card bg-pale-red">
+                  <div class="card-body">
+                    <img src="./assets/img/icons/lineal/shield.svg" class="svg-inject icon-svg icon-svg-md text-red mb-3" alt="" />
+                    <h4>Secure Payments</h4>
+                    <p class="mb-0">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta.</p>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+              <div class="col-md-5">
+                <div class="card bg-pale-leaf">
+                  <div class="card-body">
+                    <img src="./assets/img/icons/lineal/cloud-computing-3.svg" class="svg-inject icon-svg icon-svg-md text-leaf mb-3" alt="" />
+                    <h4>Daily Updates</h4>
+                    <p class="mb-0">Nulla vitae elit libero, a pharetra augue.</p>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+              <div class="col-md-6 align-self-start">
+                <div class="card bg-pale-primary">
+                  <div class="card-body">
+                    <img src="./assets/img/icons/lineal/analytics.svg" class="svg-inject icon-svg icon-svg-md mb-3" alt="" />
+                    <h4>Market Research</h4>
+                    <p class="mb-0">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget.</p>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!--/column -->
+            </div>
+            <!--/.row -->
+          </div>
+          <!--/column -->
+          <div class="col-lg-5">
+           <div class="text-left mb-4">
+                <span class="section-title">
+                  &#9679; Portfolio
+                </span>
+              </div>
+            <h2 class="display-4 mb-3 text-primary">Why Choose Us</h2>
+            <p class="text-primary">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+          </div>
+          <!--/column -->
+        </div>
+        <!--/.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+
+
+
+    <!-- testimonial section -->
+
+    <section class="wrapper bg-dark">
+      <div class="container py-14 py-md-16">
+        <div class="text-center mb-4">
+          <span class="section-title">
+            &#9679; Testimonials
+          </span>
+        </div>
+        <h2 class="display-4 mb-3 text-center text-primary">Client Reviews</h2>
+        <div class="position-relative">
+          <div class="shape rounded-circle bg-soft-yellow rellax w-16 h-16" data-rellax-speed="1" style="bottom: 0.5rem; right: -1.7rem;"></div>
+          <div class="shape bg-dot red rellax w-16 h-16" data-rellax-speed="1" style="top: -1rem; left: -1.7rem;"></div>
+          <div class="swiper-container dots-closer mb-6" data-margin="0" data-dots="true" data-items-xl="3" data-items-md="2" data-items-xs="1">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="item-inner">
+                    <div class="card bg-card-custom text-primary">
+                      <div class="card-body">
+                        <blockquote class="icon mb-0">
+                          <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper. Cras justo odio dapibus facilisis sociis natoque penatibus.”</p>
+                          <div class="blockquote-details">
+                            <img class="rounded-circle w-12" src="./assets/img/avatars/te1.jpg" srcset="./assets/img/avatars/te1@2x.jpg 2x" alt="" />
+                            <div class="info">
+                              <h5 class="mb-1 text-secondary">Coriss Ambady</h5>
+                              <p class="mb-0">Financial Analyst</p>
+                            </div>
+                          </div>
+                        </blockquote>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.item-inner -->
+                </div>
+                <!--/.swiper-slide -->
+                <div class="swiper-slide">
+                  <div class="item-inner">
+                    <div class="card bg-card-custom text-primary">
+                      <div class="card-body">
+                        <blockquote class="icon mb-0">
+                          <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper. Cras justo odio dapibus facilisis sociis natoque penatibus.”</p>
+                          <div class="blockquote-details">
+                            <img class="rounded-circle w-12" src="./assets/img/avatars/te2.jpg" srcset="./assets/img/avatars/te2@2x.jpg 2x" alt="" />
+                            <div class="info">
+                              <h5 class="mb-1 text-secondary">Cory Zamora</h5>
+                              <p class="mb-0">Marketing Specialist</p>
+                            </div>
+                          </div>
+                        </blockquote>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.item-inner -->
+                </div>
+                <!--/.swiper-slide -->
+                <div class="swiper-slide">
+                  <div class="item-inner">
+                    <div class="card bg-card-custom text-primary">
+                      <div class="card-body">
+                        <blockquote class="icon mb-0">
+                          <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta felis euismod semper. Cras justo odio dapibus facilisis sociis natoque penatibus.”</p>
+                          <div class="blockquote-details">
+                            <img class="rounded-circle w-12" src="./assets/img/avatars/te2.jpg" srcset="./assets/img/avatars/te2@2x.jpg 2x" alt="" />
+                            <div class="info">
+                              <h5 class="mb-1 text-secondary">Cory Zamora</h5>
+                              <p class="mb-0">Marketing Specialist</p>
+                            </div>
+                          </div>
+                        </blockquote>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                  <!-- /.item-inner -->
+                </div>
+                <!--/.swiper-slide -->
+              </div>
+              <!--/.swiper-wrapper -->
+            </div>
+            <!-- /.swiper -->
+          </div>
+          <!-- /.swiper-container -->
+        </div>
+        <!-- /.position-relative -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <!-- /section -->
+
+
+
+
     <!-- pricing section -->
-    <section class="pricing-section">
+    <section class="pricing-section bg-secondary">
       <div class="container" style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
     
         <!-- Header -->
@@ -336,7 +775,7 @@
           <div class="pricing-cards">
     
             <!-- BASIC -->
-            <div class="pricing-card">
+            <div class="pricing-card bg-card-custom">
               <div class="card-header-row">
                 <p class="card-tier">Basic</p>
               </div>
@@ -353,7 +792,7 @@
             </div>
     
             <!-- STANDARD (Popular) -->
-            <div class="pricing-card popular">
+            <div class="pricing-card popular bg-card-custom">
               <div class="card-header-row">
                 <p class="card-tier">Standard</p>
                 <span class="card-popular-badge">Popular</span>
@@ -372,7 +811,7 @@
             </div>
     
             <!-- PREMIUM -->
-            <div class="pricing-card">
+            <div class="pricing-card bg-card-custom">
               <div class="card-header-row">
                 <p class="card-tier">Premium</p>
               </div>
@@ -413,6 +852,88 @@
     <!-- /section -->
 
     <!-- end hero contact section -->
+     
+    <!--  contact section -->
+      
+   <section class="wrap">
+    <div class="inner">
+      <!-- Left -->
+      <div>
+        <div class="text-left mb-4">
+          <span class="section-title">
+            &#9679; Contact
+          </span>
+        </div>
+        <h2 class="display-4 mb-3 text-white">Contact Info</h2>
+        <p class="section-desc">I bring rapid solutions to make the life of my clients easier. Have any questions? Reach out to me from this contact form and I will get back to you shortly.</p>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21C12 21 4 14 4 9a8 8 0 1 1 16 0c0 5-8 12-8 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <div class="info-label">Address</div>
+            <div class="info-value">Yogyakarta, Indonesia</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          </div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">codemora@gmail.com</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2-2h3l1 4-2 2a16 16 0 0 0 7 7l2-2 4 1v3a2 2 0 0 1-2 2C8 21 3 13.5 3 5z"/></svg>
+          </div>
+          <div>
+            <div class="info-label">WhatsApp</div>
+            <div class="info-value">+62 1234 5678</div>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="#e05444"/></svg>
+          </div>
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4 4 20"/></svg>
+          </div>
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="form-card">
+        <p class="form-title">Get in Touch</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" />
+          </div>
+        </div>
+        <div class="form-group form-group-full">
+          <label>Message</label>
+          <textarea placeholder="Write your project ..."></textarea>
+        </div>
+        <button class="btn-send">Send Message</button>
+      </div>
+    </div>
+  </section>
+    <!-- /section -->
+
+
   </div>
   <!-- /.content-wrapper -->
   <footer class="bg-dark text-inverse">
@@ -420,7 +941,7 @@
       <div class="row gy-6 gy-lg-0">
         <div class="col-md-4 col-lg-3">
           <div class="widget">
-            <img class="mb-4" src="./assets/img/logo_codemora.png" srcset="./assets/img/logo_codemora.png 2x" alt="" />
+            <img class="mb-4" src="./assets/img/logo_moracraftnew.png" srcset="./assets/img/logo_moracraftnew.png 2x" alt="" />
             <p class="mb-4">© 2026 Codemora. <br class="d-none d-lg-block" />All rights reserved.</p>
             <nav class="nav social social-white">
               <a href="#"><i class="uil uil-twitter"></i></a>
@@ -499,7 +1020,7 @@
   </div>
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/theme.js"></script>
-  <script src="./assets/js/bghero.js"></script>
+  <script src="./assets/js/custom.js"></script>
 </body>
 
 </html>
