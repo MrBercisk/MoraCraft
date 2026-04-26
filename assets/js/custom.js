@@ -1,53 +1,47 @@
-// Konfigurasi tampilan grid
+// ===== GRID CANVAS =====
 const GRID_CONFIG = {
   cellWidth:  120,
   cellHeight: 80,
-  skew:       0.55,  // kemiringan perspektif (0.5–0.6)
+  skew:       0.55,
   lineColor:  'rgba(190, 80, 80, 0.28)',
   lineWidth:  0.8,
 };
-const canvas = document.getElementById('hexCanvas'); 
-const ctx = canvas.getContext('2d');
 
-function drawGrid() {
-  const W = canvas.offsetWidth  || 900;
-  const H = canvas.offsetHeight || 600;
-  canvas.width  = W;
-  canvas.height = H;
-  ctx.clearRect(0, 0, W, H);
-
-  const { cellWidth, cellHeight, skew, lineColor, lineWidth } = GRID_CONFIG;
-  const rows    = Math.ceil(H / cellHeight) + 4;
-  const cols    = Math.ceil(W / cellWidth)  + 4;
-  const xOffset = skew * (H + cellHeight * 4) + cellWidth;
-
-  ctx.strokeStyle = lineColor;
-  ctx.lineWidth   = lineWidth;
-
-  // Garis horizontal miring
-  for (let r = -2; r < rows + 2; r++) {
-    const y = r * cellHeight;
-    ctx.beginPath();
-    ctx.moveTo(-xOffset, y + H);
-    ctx.lineTo(-xOffset + W + xOffset * 2 + cellWidth * 2, y - skew * (H + cellHeight * 4));
-    ctx.stroke();
+const canvas = document.getElementById('hexCanvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  function drawGrid() {
+    const W = canvas.offsetWidth  || 900;
+    const H = canvas.offsetHeight || 600;
+    canvas.width  = W;
+    canvas.height = H;
+    ctx.clearRect(0, 0, W, H);
+    const { cellWidth, cellHeight, skew, lineColor, lineWidth } = GRID_CONFIG;
+    const rows    = Math.ceil(H / cellHeight) + 4;
+    const cols    = Math.ceil(W / cellWidth)  + 4;
+    const xOffset = skew * (H + cellHeight * 4) + cellWidth;
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth   = lineWidth;
+    for (let r = -2; r < rows + 2; r++) {
+      const y = r * cellHeight;
+      ctx.beginPath();
+      ctx.moveTo(-xOffset, y + H);
+      ctx.lineTo(-xOffset + W + xOffset * 2 + cellWidth * 2, y - skew * (H + cellHeight * 4));
+      ctx.stroke();
+    }
+    for (let c = -2; c < cols + 4; c++) {
+      const x = c * cellWidth;
+      ctx.beginPath();
+      ctx.moveTo(x, H + cellHeight);
+      ctx.lineTo(x + skew * (H + cellHeight * 2), -cellHeight);
+      ctx.stroke();
+    }
   }
-
-  // Garis vertikal miring
-  for (let c = -2; c < cols + 4; c++) {
-    const x = c * cellWidth;
-    ctx.beginPath();
-    ctx.moveTo(x, H + cellHeight);
-    ctx.lineTo(x + skew * (H + cellHeight * 2), -cellHeight);
-    ctx.stroke();
-  }
+  drawGrid();
+  window.addEventListener('resize', drawGrid);
 }
 
-drawGrid();
-window.addEventListener('resize', drawGrid);
-
-// Duplikasi #techTrack untuk efek marquee/loop
-
+// ===== MARQUEE =====
 const techTrack = document.getElementById('techTrack');
 if (techTrack && !techTrack.nextElementSibling) {
   const trackClone = techTrack.cloneNode(true);
@@ -55,37 +49,52 @@ if (techTrack && !techTrack.nextElementSibling) {
   techTrack.parentNode.appendChild(trackClone);
 }
 
-  document.querySelectorAll('.sidebar-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-document.addEventListener('DOMContentLoaded', function () {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const sidebar      = document.getElementById('mobileSidebar');
-  const sidebarClose = document.getElementById('sidebarClose');
-  const backdrop     = document.getElementById('sidebarBackdrop');
-
-  function openSidebar() {
-    sidebar.classList.add('is-open');
-    backdrop.classList.add('is-visible');
-    document.body.style.overflow = 'hidden';
-    hamburgerBtn.classList.add('is-active');
-  }
-
-  function closeSidebar() {
-    sidebar.classList.remove('is-open');
-    backdrop.classList.remove('is-visible');
-    document.body.style.overflow = '';
-    hamburgerBtn.classList.remove('is-active');
-  }
-
-  hamburgerBtn?.addEventListener('click', openSidebar);
-  sidebarClose?.addEventListener('click', closeSidebar);
-  backdrop?.addEventListener('click', closeSidebar);
-
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', closeSidebar);
+// ===== SIDEBAR BTN ACTIVE =====
+document.querySelectorAll('.sidebar-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
   });
 });
+function initHamburger() {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const dropdown = document.getElementById('mobileDropdown');
+
+  if (!hamburgerBtn) {
+    console.warn('hamburgerBtn tidak ditemukan!');
+    return;
+  }
+  if (!dropdown) {
+    console.warn('mobileDropdown tidak ditemukan!');
+    return;
+  }
+
+  hamburgerBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.toggle('is-open');
+    hamburgerBtn.classList.toggle('is-active', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen.toString());
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!hamburgerBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('is-open');
+      hamburgerBtn.classList.remove('is-active');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  dropdown.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      dropdown.classList.remove('is-open');
+      hamburgerBtn.classList.remove('is-active');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHamburger);
+} else {
+  initHamburger();
+}
