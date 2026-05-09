@@ -26,6 +26,74 @@
 }
 
 
+/* Base */
+.icon-svg {
+  transition: all 0.3s ease;
+}
+
+.icon-svg:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Yellow */
+.icon-yellow {
+  filter: brightness(0) saturate(100%) invert(84%) sepia(87%)
+    saturate(1400%) hue-rotate(357deg) brightness(105%) contrast(105%);
+}
+
+/* Red */
+.icon-red {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(44%)
+    saturate(1170%) hue-rotate(314deg) brightness(97%) contrast(92%);
+}
+
+/* Green */
+.icon-green {
+  filter: brightness(0) saturate(100%) invert(71%) sepia(37%)
+    saturate(661%) hue-rotate(58deg) brightness(95%) contrast(90%);
+}
+
+/* Blue */
+.icon-blue {
+  filter: brightness(0) saturate(100%) invert(35%) sepia(98%)
+    saturate(2086%) hue-rotate(221deg) brightness(98%) contrast(103%);
+}
+
+/* Purple */
+.icon-purple {
+  filter: brightness(0) saturate(100%) invert(34%) sepia(94%)
+    saturate(748%) hue-rotate(244deg) brightness(97%) contrast(97%);
+}
+
+/* Pink */
+.icon-pink {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(44%)
+    saturate(2876%) hue-rotate(293deg) brightness(101%) contrast(101%);
+}
+
+/* Orange */
+.icon-orange {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(83%)
+    saturate(1377%) hue-rotate(360deg) brightness(102%) contrast(101%);
+}
+
+/* Cyan */
+.icon-cyan {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(39%)
+    saturate(2073%) hue-rotate(141deg) brightness(97%) contrast(101%);
+}
+
+/* White */
+.icon-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Gray */
+.icon-gray {
+  filter: brightness(0) saturate(100%) invert(67%) sepia(0%)
+    saturate(0%) hue-rotate(182deg) brightness(93%) contrast(89%);
+}
+
 .icon-yellow {
   filter: brightness(0) saturate(100%) invert(85%) sepia(80%) saturate(600%) hue-rotate(5deg) brightness(110%);
 }
