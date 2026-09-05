@@ -1,136 +1,254 @@
 <template>
-  <div>
-    <div class="content-wrapper">
-      <NavbarComponent />
+  <div class="app-wrapper bg-dark text-white min-vh-100">
+    <!-- Floating Responsive Navbar (Full Width) -->
+    <Navbar 
+      :currentRoute="currentRoute"
+      @navigate="handleNavigate"
+    />
+
+    <!-- Home Landing Page -->
+    <template v-if="currentRoute === 'home'">
+      <!-- Hero Section with Canvas Grid & Animations -->
       <HeroSection />
-      <AboutSection />
-      <TechMarqueeSection />
-      <ExpertiseSection />
-      <PortfolioSection />
-      <WhyChooseUsSection />
-      <TestimonialSection />
-      <PricingSection />
-      <ContactHeroSection />
-      <ContactSection />
-    </div>
-    <!-- /.content-wrapper -->
 
-    <FooterComponent />
+      <!-- Studio About & Performance Stats with Link to Detail Page -->
+      <AboutSection @go-to-about="handleNavigate('about')" />
 
-    <div class="progress-wrap">
-      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-      </svg>
-    </div>
+      <!-- Tech Stack / Tools Architecture Infinite Marquee -->
+      <TechMarquee />
+
+      <!-- Filterable Featured Portfolio & Case Studies -->
+      <PortfolioSection 
+        @select-service="handleServiceSelect" 
+        @open-project="handleOpenProject"
+        @view-all-projects="() => handleOpenProject(101)"
+      />
+
+      <!-- Pricing Packages with Tab Switcher -->
+      <PricingSection @select-service="handleServiceSelect" />
+
+      <!-- Verified Client Testimonials & Trust Metrics -->
+      <TestimonialsSection />
+
+      <!-- Interactive FAQ Accordion -->
+      <FaqSection />
+
+      <!-- Project Inquiry & Contact Channels -->
+      <ContactSection :preselectedService="selectedService" />
+    </template>
+
+    <!-- Dedicated Project & Case Study Detail Page -->
+    <template v-else-if="currentRoute === 'project-detail'">
+      <ProjectDetailPage 
+        :initialProjectId="selectedProjectId"
+        @go-home="handleNavigate('home')"
+        @go-contact="(service) => { handleServiceSelect(service); handleNavigate('home', 'contact'); }"
+      />
+    </template>
+
+    <!-- Detailed About Us Dedicated Page -->
+    <template v-else-if="currentRoute === 'about'">
+      <AboutUsPage 
+        @go-home="handleNavigate('home')"
+        @go-contact="handleNavigate('home', 'contact')"
+        @go-portfolio="handleNavigate('home', 'portfolio')"
+      />
+    </template>
+
+    <!-- Terms & Conditions Dedicated Page -->
+    <template v-else-if="currentRoute === 'terms'">
+      <TermsPage 
+        @go-home="handleNavigate('home')"
+        @go-contact="handleNavigate('home', 'contact')"
+      />
+    </template>
+
+    <!-- Privacy Policy Dedicated Page -->
+    <template v-else-if="currentRoute === 'privacy'">
+      <PrivacyPage 
+        @go-home="handleNavigate('home')"
+        @go-contact="handleNavigate('home', 'contact')"
+      />
+    </template>
+
+    <!-- Footer with Brand, Navigation & Newsletter -->
+    <FooterSection @navigate="handleNavigate" />
   </div>
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import Navbar from './components/Navbar.vue'
+import HeroSection from './components/HeroSection.vue'
+import TechMarquee from './components/TechMarquee.vue'
+import AboutSection from './components/AboutSection.vue'
+import PortfolioSection from './components/PortfolioSection.vue'
+import PricingSection from './components/PricingSection.vue'
+import TestimonialsSection from './components/TestimonialsSection.vue'
+import FaqSection from './components/FaqSection.vue'
+import ContactSection from './components/ContactSection.vue'
+import FooterSection from './components/FooterSection.vue'
+import AboutUsPage from './pages/AboutUsPage.vue'
+import TermsPage from './pages/TermsPage.vue'
+import PrivacyPage from './pages/PrivacyPage.vue'
+import ProjectDetailPage from './pages/ProjectDetailPage.vue'
+import { scrollToSection, scrollToTopDirectly } from './utils/scroll.js'
 
-import NavbarComponent    from './components/NavbarComponent.vue'
-import HeroSection        from './components/HeroSection.vue'
-import AboutSection       from './components/AboutSection.vue'
-import TechMarqueeSection from './components/TechMarqueeSection.vue'
-import ExpertiseSection   from './components/ExpertiseSection.vue'
-import PortfolioSection   from './components/PortfolioSection.vue'
-import WhyChooseUsSection from './components/WhyChooseUsSection.vue'
-import TestimonialSection from './components/TestimonialSection.vue'
-import PricingSection     from './components/PricingSection.vue'
-import ContactHeroSection from './components/ContactHeroSection.vue'
-import ContactSection     from './components/ContactSection.vue'
-import FooterComponent    from './components/FooterComponent.vue'
+const currentRoute = ref('home')
+const selectedProjectId = ref(101)
+const selectedService = ref('')
 
-/**
- * Dynamically inject a <script> tag and wait for it to load.
- * This ensures vendor scripts (plugins.js, theme.js) run AFTER
- * Vue has fully rendered all components to the DOM.
- */
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    // Avoid double-loading
-    if (document.querySelector(`script[src="${src}"]`)) {
-      resolve()
-      return
-    }
-    const script = document.createElement('script')
-    script.src = src
-    script.onload = resolve
-    script.onerror = () => reject(new Error(`Failed to load script: ${src}`))
-    document.body.appendChild(script)
-  })
+const handleServiceSelect = (service) => {
+  selectedService.value = service
 }
 
-/**
- * Initialize custom DOM effects:
- * - Hero grid canvas animation
- * - Tech marquee infinite scroll clone
- */
-function initCustom() {
-  // ── GRID CANVAS ──────────────────────────────────────────────
-  const GRID_CONFIG = {
-    cellWidth:  120,
-    cellHeight: 80,
-    skew:       0.55,
-    lineColor:  'rgba(190, 80, 80, 0.28)',
-    lineWidth:  0.8,
-  }
-  const canvas = document.getElementById('hexCanvas')
-  if (canvas) {
-    const ctx = canvas.getContext('2d')
-    function drawGrid() {
-      const W = canvas.offsetWidth  || 900
-      const H = canvas.offsetHeight || 600
-      canvas.width  = W
-      canvas.height = H
-      ctx.clearRect(0, 0, W, H)
-      const { cellWidth, cellHeight, skew, lineColor, lineWidth } = GRID_CONFIG
-      const rows    = Math.ceil(H / cellHeight) + 4
-      const cols    = Math.ceil(W / cellWidth)  + 4
-      const xOffset = skew * (H + cellHeight * 4) + cellWidth
-      ctx.strokeStyle = lineColor
-      ctx.lineWidth   = lineWidth
-      for (let r = -2; r < rows + 2; r++) {
-        const y = r * cellHeight
-        ctx.beginPath()
-        ctx.moveTo(-xOffset, y + H)
-        ctx.lineTo(-xOffset + W + xOffset * 2 + cellWidth * 2, y - skew * (H + cellHeight * 4))
-        ctx.stroke()
-      }
-      for (let c = -2; c < cols + 4; c++) {
-        const x = c * cellWidth
-        ctx.beginPath()
-        ctx.moveTo(x, H + cellHeight)
-        ctx.lineTo(x + skew * (H + cellHeight * 2), -cellHeight)
-        ctx.stroke()
-      }
-    }
-    drawGrid()
-    window.addEventListener('resize', drawGrid)
-  }
-
-  // ── MARQUEE CLONE ────────────────────────────────────────────
-  const techTrack = document.getElementById('techTrack')
-  if (techTrack && !techTrack.nextElementSibling) {
-    const clone = techTrack.cloneNode(true)
-    clone.setAttribute('aria-hidden', 'true')
-    techTrack.parentNode.appendChild(clone)
-  }
+const handleOpenProject = (projectId) => {
+  selectedProjectId.value = projectId || 101
+  currentRoute.value = 'project-detail'
+  window.location.hash = `#/project/${projectId || 101}`
+  scrollToTopDirectly(false)
+  nextTick(() => scrollToTopDirectly(false))
 }
 
-onMounted(async () => {
-  // Wait for Vue to finish rendering all child components
+// Watch route changes and guarantee immediate top alignment across DOM mount ticks
+watch(currentRoute, async () => {
+  scrollToTopDirectly(false)
   await nextTick()
+  scrollToTopDirectly(false)
+  requestAnimationFrame(() => {
+    scrollToTopDirectly(false)
+  })
+})
 
-  try {
-    // Load vendor scripts sequentially after DOM is ready
-    await loadScript('/assets/js/plugins.js')
-    await loadScript('/assets/js/theme.js')
-  } catch (err) {
-    console.warn('[MoraCraft] Vendor script load warning:', err)
+const syncRouteWithHash = () => {
+  const hash = window.location.hash.toLowerCase()
+  if (hash === '#/about' || hash === '#/about-us') {
+    currentRoute.value = 'about'
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+  } else if (hash === '#/terms' || hash === '#/terms-and-conditions' || hash === '#terms-and-conditions') {
+    currentRoute.value = 'terms'
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+  } else if (hash === '#/privacy' || hash === '#/privacy-policy' || hash === '#privacy-policy') {
+    currentRoute.value = 'privacy'
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+  } else if (hash.startsWith('#/project/') || hash === '#/projects' || hash === '#/portfolio-detail') {
+    currentRoute.value = 'project-detail'
+    const parts = hash.split('/')
+    if (parts[2]) {
+      const parsedId = parseInt(parts[2], 10)
+      if (!isNaN(parsedId)) {
+        selectedProjectId.value = parsedId
+      }
+    }
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+  } else {
+    currentRoute.value = 'home'
+    const sectionId = hash.replace(/^#\/?/, '')
+    if (sectionId && sectionId !== 'hero') {
+      nextTick(() => {
+        scrollToSection(sectionId)
+      })
+    } else {
+      scrollToTopDirectly(false)
+      nextTick(() => scrollToTopDirectly(false))
+    }
+  }
+}
+
+const handleNavigate = (route, targetSection) => {
+  if (route === 'about') {
+    currentRoute.value = 'about'
+    window.location.hash = '#/about-us'
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+    return
+  }
+  if (route === 'terms') {
+    currentRoute.value = 'terms'
+    window.location.hash = '#/terms-and-conditions'
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+    return
+  }
+  if (route === 'privacy') {
+    currentRoute.value = 'privacy'
+    window.location.hash = '#/privacy-policy'
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+    return
+  }
+  if (route === 'project-detail') {
+    currentRoute.value = 'project-detail'
+    if (targetSection) {
+      const parsed = parseInt(targetSection, 10)
+      if (!isNaN(parsed)) selectedProjectId.value = parsed
+    }
+    window.location.hash = `#/project/${selectedProjectId.value}`
+    scrollToTopDirectly(false)
+    nextTick(() => scrollToTopDirectly(false))
+    return
   }
 
-  // Run custom canvas + marquee init
-  initCustom()
+  // Navigate to home
+  currentRoute.value = 'home'
+
+  if (targetSection && targetSection !== 'hero') {
+    window.location.hash = `#${targetSection}`
+    nextTick(() => {
+      scrollToSection(targetSection)
+    })
+  } else {
+    window.location.hash = '#hero'
+    scrollToTopDirectly(false)
+    nextTick(() => {
+      scrollToTopDirectly(false)
+      scrollToSection('hero')
+    })
+  }
+}
+
+onMounted(() => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
+  syncRouteWithHash()
+  window.addEventListener('hashchange', syncRouteWithHash)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('hashchange', syncRouteWithHash)
 })
 </script>
+
+<style>
+/* Smooth scrolling and nav clearance */
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+}
+
+#hero,
+#about,
+#portfolio,
+#pricing,
+#testimonials,
+#faq,
+#contact,
+section[id] {
+  scroll-margin-top: 85px;
+}
+
+/* Global app wrapper fixes */
+.app-wrapper {
+  overflow-x: clip;
+  position: relative;
+}
+</style>
