@@ -49,7 +49,7 @@
         <div class="col-md-6 col-lg-3">
           <h4 class="footer-heading text-white fw-bold mb-3">Konsultasi Studio</h4>
           <p class="text-secondary small mb-2">Punya ide proyek atau butuh ulasan arsitektur?</p>
-          <a href="mailto:contact@moracraft.com" class="footer-email-link mb-3 d-inline-block">contact@moracraft.com</a>
+          <a href="mailto:studiomoracraft@gmail.com" class="footer-email-link mb-3 d-inline-block">studiomoracraft@gmail.com</a>
           <div class="d-flex gap-2 mt-2">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-chip">Instagram</a>
           </div>

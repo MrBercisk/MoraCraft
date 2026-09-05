@@ -195,7 +195,7 @@ const sections = [
         Syarat dan Ketentuan ini diatur dan ditafsirkan sesuai dengan hukum yang berlaku di Republik Indonesia. Segala perselisihan yang timbul akan diupayakan untuk diselesaikan secara musyawarah untuk mencapai mufakat.
       </p>
       <p class="mb-0">
-        Untuk pertanyaan resmi terkait kontrak, invoice, atau konsultasi klausul khusus, silakan hubungi kami melalui email di <a href="mailto:contact@moracraft.com" class="text-accent fw-bold text-decoration-none">contact@moracraft.com</a>.
+        Untuk pertanyaan resmi terkait kontrak, invoice, atau konsultasi klausul khusus, silakan hubungi kami melalui email di <a href="mailto:studiomoracraft@gmail.com" class="text-accent fw-bold text-decoration-none">studiomoracraft@gmail.com</a>.
       </p>
     `
   }

@@ -127,7 +127,7 @@ const sections = [
           <strong>Data Formulir Kontak:</strong> Nama lengkap, alamat email, serta deskripsi kebutuhan proyek yang Anda isi secara sukarela melalui formulir di situs kami.
         </li>
         <li class="mb-2">
-          <strong>Data Komunikasi Langsung:</strong> Pesan yang Anda kirimkan melalui email resmi kami (<code>contact@moracraft.com</code>) atau pesan WhatsApp.
+          <strong>Data Komunikasi Langsung:</strong> Pesan yang Anda kirimkan melalui email resmi kami (<code>studiomoracraft@gmail.com</code>) atau pesan WhatsApp.
         </li>
         <li>
           <strong>Data Teknis Non-Pribadi:</strong> Informasi anonim browser, resolusi layar, dan metrik Core Web Vitals untuk tujuan diagnostik performa situs tanpa mengaitkannya dengan identitas individu Anda.
@@ -204,7 +204,7 @@ const sections = [
         Jika Anda memiliki pertanyaan, masukan, atau permohonan hak privasi terkait data Anda, silakan hubungi tim kami melalui:
       </p>
       <p class="mb-0">
-        Email: <a href="mailto:contact@moracraft.com" class="text-accent fw-bold text-decoration-none">contact@moracraft.com</a><br />
+        Email: <a href="mailto:studiomoracraft@gmail.com" class="text-accent fw-bold text-decoration-none">studiomoracraft@gmail.com</a><br />
         Alamat: MoraCraft Studio, Jakarta, Indonesia (Remote Global Network).
       </p>
     `

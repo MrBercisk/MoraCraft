@@ -43,7 +43,7 @@
 
                 <!-- Email -->
                 <a 
-                  href="mailto:contact@moracraft.com" 
+                  href="mailto:studiomoracraft@gmail.com" 
                   class="contact-direct-card d-flex align-items-center gap-3 p-3 text-decoration-none"
                 >
                   <div class="icon-box email-box">
@@ -54,7 +54,7 @@
                   </div>
                   <div>
                     <span class="direct-label d-block text-secondary">Email</span>
-                    <span class="direct-val text-white">contact@moracraft.com</span>
+                    <span class="direct-val text-white">studiomoracraft@gmail.com</span>
                   </div>
                 </a>
 
